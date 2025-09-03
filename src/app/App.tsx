@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 // ** Styles
 import './App.css';
@@ -12,33 +12,9 @@ import ProductGrid from '@app/components/ProductGrid/ProductGrid';
 // ** Types
 import type { IProduct } from '@app/types/Product';
 
-const initialProducts: IProduct[] = [
-  {
-    name: 'Laptop Xtreme 15',
-    brand: 'TechNova',
-    category: 'laptop',
-    image: 'https://via.placeholder.com/400x200?text=Laptop+Xtreme',
-    description: 'Potente laptop con procesador Intel i7 y 16GB RAM.',
-  },
-  {
-    name: 'Drone SkyZoom',
-    brand: 'FlyTech',
-    category: 'drone',
-    image: 'https://via.placeholder.com/400x200?text=Drone+SkyZoom',
-    description: 'Drone con cámara 4K y estabilización avanzada.',
-  },
-  {
-    name: 'Tablet VisionPad',
-    brand: 'NovaTab',
-    category: 'tablet',
-    image: 'https://via.placeholder.com/400x200?text=Tablet+VisionPad',
-    description: "Pantalla AMOLED de 11'' y batería de larga duración.",
-  },
-];
-
 function App() {
-  const [products] = useState<IProduct[]>(initialProducts);
-  const [filtered, setFiltered] = useState<IProduct[]>(initialProducts);
+  const [products, setProducts] = useState<IProduct[]>([]);
+  const [filtered, setFiltered] = useState<IProduct[]>([]);
   const [category, setCategory] = useState('');
   const [search, setSearch] = useState('');
 
@@ -51,6 +27,23 @@ function App() {
     );
     setFiltered(result);
   };
+
+  useEffect(() => {
+    fetch('https://rickandmortyapi.com/api/character')
+      .then((res) => res.json())
+      .then((data) => {
+        const mapped: IProduct[] = data.results.map((char: any) => ({
+          id: char.id,
+          name: char.name,
+          brand: char.origin.name,
+          category: char.species.toLowerCase(), // simulamos categoría
+          image: char.image,
+          description: `Estado: ${char.status} | Género: ${char.gender}`,
+        }));
+        setProducts(mapped);
+        setFiltered(mapped);
+      });
+  }, []);
 
   return (
     <>
