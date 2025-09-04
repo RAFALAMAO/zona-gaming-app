@@ -1,8 +1,20 @@
+import styles from './CategorySection.module.css';
+
 export default function CategorySection() {
   const categories = [
-    { name: 'Computadoras', description: 'Gaming, trabajo y estudio', count: '120+', icon: '💻' },
-    { name: 'Drones', description: 'Profesionales y recreativos', count: '45+', icon: '🛸' },
-    { name: 'Smartphones', description: 'Última generación', count: '80+', icon: '📱' },
+    {
+      name: 'Computadoras',
+      description: 'Gaming, trabajo y estudio',
+      count: '120+',
+      icon: 'bi bi-laptop',
+    },
+    {
+      name: 'Drones',
+      description: 'Profesionales y recreativos',
+      count: '45+',
+      icon: 'bi bi-bezier',
+    },
+    { name: 'Smartphones', description: 'Última generación', count: '80+', icon: 'bi bi-phone' },
   ];
 
   return (
@@ -12,11 +24,13 @@ export default function CategorySection() {
         <div className="row justify-content-center">
           {categories.map((cat, i) => (
             <div key={i} className="col-10 col-sm-6 col-md-4 mb-4">
-              <div className="card h-100 shadow-sm">
+              <div className="card h-100 shadow-sm pt-3 rounded-4">
                 <div className="card-body">
-                  <div className="display-5">{cat.icon}</div>
-                  <h5 className="card-title mt-3">{cat.name}</h5>
-                  <p className="card-text">{cat.description}</p>
+                  <div className="display-5">
+                    <i className={`${cat.icon} ${styles.icon}`}></i>
+                  </div>
+                  <h5 className="card-title mt-3 fw-bold">{cat.name}</h5>
+                  <p className="card-text text-muted">{cat.description}</p>
                   <p className="text-primary fw-bold">{cat.count} productos</p>
                 </div>
               </div>
