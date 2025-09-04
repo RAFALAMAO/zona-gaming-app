@@ -1,0 +1,39 @@
+.brand-img {
+  width: 50px;
+  border-radius: 100%;
+  margin-right: 20px;
+}
+
+.brand-name {
+  background: -webkit-linear-gradient(
+    0deg,
+    rgba(132, 0, 255, 1) 0%,
+    rgb(0, 157, 255) 52%,
+    rgba(0, 89, 255, 1) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.nav-items li a:hover {
+  background: -webkit-linear-gradient(
+    0deg,
+    rgb(153, 44, 255) 0%,
+    rgb(44, 174, 255) 52%,
+    rgb(37, 114, 255) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.search-input {
+  border-radius: 10px;
+  border-color: cornflowerblue;
+}
+
+.search-input::placeholder {
+  color: rgb(205, 242, 255);
+  opacity: 0.5;
+}

@@ -1,0 +1,20 @@
+.background {
+  background: #8400ff;
+  background: linear-gradient(45deg, rgb(0, 0, 0) 0%, rgba(0, 89, 255, 1) 100%);
+}
+
+.title {
+  background: -webkit-linear-gradient(
+    0deg,
+    rgb(255, 168, 46) 0%,
+    rgb(144, 163, 23) 51%,
+    rgb(0, 255, 132) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.sub-text {
+  color: rgb(231, 231, 231);
+}
