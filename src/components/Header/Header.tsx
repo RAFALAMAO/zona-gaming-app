@@ -3,7 +3,7 @@ import styles from './Header.module.css';
 export default function Header() {
   return (
     <header>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+      <nav className={`navbar navbar-expand-lg navbar-dark shadow-sm ${styles.navbar}`}>
         <div className="container">
           <img className={styles['brand-img']} src="./imgs/gen-icon.png" alt="gen icon" />
           <a className={`navbar-brand text-primary fw-bold ${styles['brand-name']}`} href="#">
