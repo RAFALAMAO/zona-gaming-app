@@ -22,7 +22,7 @@ export default function ProductDetailView() {
 
   const handleWhatsappClick = () => {
     const textToShare = encodeURIComponent(
-      `Me pueden dar mas información sobre este producto: ${window.location.href}`,
+      `Me pueden dar mas información sobre este producto:\n ${window.location.href}`,
     );
     const whatsappUrl = `whatsapp://send?text=${textToShare}&phone=+525610738792`;
     window.location.href = whatsappUrl;

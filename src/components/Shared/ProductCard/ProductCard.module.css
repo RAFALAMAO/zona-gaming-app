@@ -1,0 +1,60 @@
+.card {
+  border: 1px solid rgba(131, 131, 131, 0.1);
+  border-radius: 15px;
+  transition: all 0.3s ease-in-out;
+}
+
+.card:hover {
+  box-shadow: 0px 5px 12px -1px rgba(0, 0, 0, 0.61);
+  -webkit-box-shadow: 0px 5px 12px -1px rgba(0, 0, 0, 0.61);
+  -moz-box-shadow: 0px 5px 12px -1px rgba(0, 0, 0, 0.61);
+}
+
+.state-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 2px 10px;
+  border-radius: 30px;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: white;
+  font-size: 14px;
+  z-index: 100;
+}
+
+.card .img-container {
+  overflow: hidden;
+  border-radius: 15px 15px 0 0;
+}
+
+.card .img {
+  height: 250px;
+  border-radius: 15px 15px 0 0;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover .img {
+  overflow: hidden;
+  transform: scale(1.1);
+}
+
+.card:hover .card-title {
+  color: rgb(0, 92, 196);
+}
+
+.card-title {
+  font-size: 18px;
+  color: black;
+  text-align: left;
+  padding: 10px 0px;
+  height: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  transition: color 0.3s ease-in-out;
+}
