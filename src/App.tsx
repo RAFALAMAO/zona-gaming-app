@@ -1,22 +1,23 @@
+import { Route, Routes } from 'react-router';
+
 // ** Styles
 import './App.css';
 
-// ** Components
-import CategorySection from './components/CategorySection/CategorySection';
-import FeaturedProducts from './components/FeaturedProducts/FeaturedProducts';
-import Footer from './components/Footer/Footer';
-import Header from './components/Header/Header';
-import HeroBanner from './components/HeroBanner/HeroBanner';
+// ** Views
+import HomeView from './views/HomeView';
+import NotFoundView from './views/NotFoundView/NotFoundView';
+
+// ** Layout
+import Layout from './components/Layout/Layout';
 
 function App() {
   return (
-    <>
-      <Header />
-      <HeroBanner />
-      <CategorySection />
-      <FeaturedProducts />
-      <Footer />
-    </>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomeView />} />
+        <Route path="*" element={<NotFoundView />} />
+      </Route>
+    </Routes>
   );
 }
 
