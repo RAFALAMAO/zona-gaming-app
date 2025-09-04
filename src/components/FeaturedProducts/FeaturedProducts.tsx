@@ -1,3 +1,4 @@
+// ** Styles
 import styles from './FeaturedProducts.module.css';
 
 export default function FeaturedProducts() {
@@ -29,7 +30,7 @@ export default function FeaturedProducts() {
   ];
 
   return (
-    <section className="py-5">
+    <section className="py-5 bg-light">
       <div className="container text-center">
         <div className="row justify-content-between mb-5">
           <div className="col-10 text-start">

@@ -1,8 +1,9 @@
+// ** Styles
 import styles from './Footer.module.css';
 
 export default function Footer() {
   return (
-    <footer className={`text-light pt-5 pb-3 mt-5 border-top ${styles.footer}`}>
+    <footer className={`text-light pt-5 pb-3 border-top ${styles.footer}`}>
       <div className="container">
         <div className="row">
           <div className="col-md-3 mb-3">
@@ -14,7 +15,7 @@ export default function Footer() {
               Tu tienda online para la mejor tecnología, ofreciendo las últimas generaciones con
               garantía y envío gratis.
             </p>
-            <div className="mt-2">
+            <div className={`mt-2 ${styles['info-icons']}`}>
               <a href="#" className="text-light me-2">
                 <i className="bi bi-facebook"></i>
               </a>
@@ -86,10 +87,16 @@ export default function Footer() {
 
           <div className="col-md-3 mb-3">
             <h6 className="fw-bold">Contacto</h6>
-            <div className="text-white-50">
-              <p className="small mb-1">📧 support@techmarket.com</p>
-              <p className="small mb-1">📞 +1 (123) 456-7890</p>
-              <p className="small">📍 Ciudad de México, México</p>
+            <div className={`text-white-50 ${styles['contact-icons']}`}>
+              <p className="small mb-1">
+                <i className="bi bi-envelope"></i> support@techmarket.com
+              </p>
+              <p className="small mb-1">
+                <i className="bi bi-whatsapp" /> +52 5610738792
+              </p>
+              <p className="small">
+                <i className="bi bi-geo-alt"></i> Ciudad de México, México
+              </p>
             </div>
           </div>
         </div>

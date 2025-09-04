@@ -6,3 +6,13 @@
   width: 35px;
   margin-right: 20px;
 }
+
+.contact-icons i {
+  margin-right: 5px;
+  color: rgb(75, 189, 255);
+}
+
+.info-icons i {
+  margin-right: 5px;
+  color: rgb(75, 189, 255);
+}
