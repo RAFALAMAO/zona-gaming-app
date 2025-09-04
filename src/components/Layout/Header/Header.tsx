@@ -1,4 +1,5 @@
 // ** Styles
+import { Link } from 'react-router';
 import styles from './Header.module.css';
 
 export default function Header() {
@@ -6,10 +7,12 @@ export default function Header() {
     <header>
       <nav className={`navbar navbar-expand-lg navbar-dark shadow-sm ${styles.navbar}`}>
         <div className="container">
-          <img className={styles['brand-img']} src="./imgs/gen-icon.png" alt="gen icon" />
-          <a className={`navbar-brand text-primary fw-bold ${styles['brand-name']}`} href="#">
-            Zona Gaming
-          </a>
+          <Link className="text-decoration-none" to={'/'}>
+            <img className={styles['brand-img']} src="./imgs/gen-icon.png" alt="gen icon" />
+            <span className={`navbar-brand text-primary fw-bold ${styles['brand-name']}`}>
+              Zona Gaming
+            </span>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -21,9 +24,9 @@ export default function Header() {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className={`navbar-nav mx-auto ${styles['nav-items']}`}>
               <li className="nav-item">
-                <a className="nav-link" href="#">
+                <Link className="nav-link" to={'/'}>
                   Inicio
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="#">

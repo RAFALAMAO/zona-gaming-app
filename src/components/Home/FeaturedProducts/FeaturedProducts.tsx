@@ -1,4 +1,5 @@
 // ** Styles
+import { Link } from 'react-router';
 import styles from './FeaturedProducts.module.css';
 
 export default function FeaturedProducts() {
@@ -55,9 +56,9 @@ export default function FeaturedProducts() {
                 <div className="card-body">
                   <h5 className={`card-title ${styles['card-title']}`}>{p.name}</h5>
                   <p className="text-primary text-start h4 fw-bold mb-4">{p.price}</p>
-                  <button className="btn btn-primary w-100">
+                  <Link to="/producto/1" className="btn btn-primary w-100">
                     <i className="bi bi-bullseye me-2"></i>Ver Más
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>

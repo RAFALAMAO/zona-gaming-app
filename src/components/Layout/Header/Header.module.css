@@ -18,6 +18,8 @@
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+
+  vertical-align: middle;
 }
 
 .nav-items li:hover {
