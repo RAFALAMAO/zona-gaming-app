@@ -3,7 +3,7 @@ import styles from './HeroBanner.module.css';
 export default function HeroBanner() {
   return (
     <section className={`text-white text-center py-5 ${styles.background}`}>
-      <div className="container">
+      <div className="container py-5">
         <h1 className="display-4 fw-bold">
           Toda la Tecnología <br />
           <span className={styles.title}>Al Mejor Precio</span>

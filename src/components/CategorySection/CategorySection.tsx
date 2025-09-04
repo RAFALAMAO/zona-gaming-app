@@ -21,12 +21,15 @@ export default function CategorySection() {
     <section className="py-5 bg-light">
       <div className="container text-center">
         <h2 className="mb-4 fw-bold">Explora por Categorías</h2>
+        <p className="text-muted mb-5">
+          Encuentra exactamente lo que buscas en nuestras categorías especializadas
+        </p>
         <div className="row justify-content-center">
           {categories.map((cat, i) => (
             <div key={i} className="col-10 col-sm-6 col-md-4 mb-4">
-              <div className="card h-100 shadow-sm pt-3 rounded-4">
+              <div className={`card h-100 pt-3 ${styles.card}`}>
                 <div className="card-body">
-                  <div className="display-5">
+                  <div className={`display-5 ${styles['icon-container']}`}>
                     <i className={`${cat.icon} ${styles.icon}`}></i>
                   </div>
                   <h5 className="card-title mt-3 fw-bold">{cat.name}</h5>

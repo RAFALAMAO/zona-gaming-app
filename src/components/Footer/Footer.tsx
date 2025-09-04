@@ -4,7 +4,7 @@ export default function Footer() {
       <div className="container">
         <div className="row">
           <div className="col-md-3 mb-3">
-            <h5 className="text-primary">TechMarket</h5>
+            <h5 className="text-primary">Zona Gaming</h5>
             <p className="small">
               Tu tienda online para la mejor tecnología, ofreciendo las últimas generaciones con
               garantía y envío gratis.
@@ -88,7 +88,7 @@ export default function Footer() {
         </div>
 
         <hr />
-        <div className="text-center small">© 2024 TechMarket. Todos los derechos reservados.</div>
+        <div className="text-center small">© 2025 Zona Gaming. Todos los derechos reservados.</div>
       </div>
     </footer>
   );

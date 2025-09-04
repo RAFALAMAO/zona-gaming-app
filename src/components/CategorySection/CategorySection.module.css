@@ -1,7 +1,37 @@
-.icon {
-  font-size: 20px;
+.card {
+  border: 0.5px solid rgba(49, 118, 255, 0.1);
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.card:hover {
+  border: 0.5px solid rgba(49, 118, 255, 0.5);
+  box-shadow: 2px 9px 11px -3px rgba(0, 30, 63, 0.29);
+  -webkit-box-shadow: 2px 9px 11px -3px rgba(0, 30, 63, 0.29);
+  -moz-box-shadow: 2px 9px 11px -3px rgba(0, 30, 63, 0.29);
+}
+
+.card .icon-container {
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover .icon-container {
+  transform: scale(1.1);
+}
+
+.icon-container {
+  margin: auto;
+  font-size: 40px;
   background-color: rgb(49, 118, 255);
   padding: 15px;
+  width: 80px;
+  height: 80px;
   border-radius: 100%;
+  color: white;
+}
+
+.icon {
+  font-size: 40px;
   color: white;
 }
