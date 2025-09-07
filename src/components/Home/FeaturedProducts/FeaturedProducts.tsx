@@ -39,8 +39,8 @@ export default function FeaturedProducts() {
       <div className="container text-center">
         <div className="row justify-content-between mb-5">
           <div className="col-10 text-start">
-            <h2 className="mb-2 fw-bold">Productos Destacados</h2>
-            <p className="text-muted mb-0">Los productos más populares de nuestra tienda</p>
+            <h2 className="mb-2 fw-bold">Agregados Recientemente</h2>
+            <p className="text-muted mb-0">Los ultimos productos publicados</p>
           </div>
           <Link
             to="/productos"
