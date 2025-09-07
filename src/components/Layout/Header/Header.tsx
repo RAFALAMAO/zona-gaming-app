@@ -24,29 +24,24 @@ export default function Header() {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className={`navbar-nav mx-auto ${styles['nav-items']}`}>
               <li className="nav-item">
-                <Link className="nav-link" to={'/'}>
+                <Link className="nav-link" to="/">
                   Inicio
                 </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Computadoras
-                </a>
+                <Link className="nav-link" to="/#categorias">
+                  Categorias
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Drones
-                </a>
+                <Link className="nav-link" to="/#agregados">
+                  Agregados Recientemente
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Smartphones
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Accesorios
-                </a>
+                <Link className="nav-link" to="productos">
+                  Todos Los Productos
+                </Link>
               </li>
             </ul>
             <form className="d-flex">

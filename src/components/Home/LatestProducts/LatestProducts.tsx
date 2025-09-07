@@ -1,12 +1,12 @@
 import { Link } from 'react-router';
 
 // ** Styles
-import styles from './FeaturedProducts.module.css';
+import styles from './LatestProducts.module.css';
 
 // ** Components
 import ProductCard from '@/components/Shared/ProductCard/ProductCard';
 
-export default function FeaturedProducts() {
+export default function LatestProducts() {
   const products = [
     {
       name: 'Laptop Gaming ROG Strix - Intel i7, RTX 4060, 16GB RAM',
@@ -35,7 +35,7 @@ export default function FeaturedProducts() {
   ];
 
   return (
-    <section className="py-5 bg-light">
+    <section id="agregados" className="py-5 bg-light">
       <div className="container text-center">
         <div className="row justify-content-between mb-5">
           <div className="col-10 text-start">

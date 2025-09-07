@@ -19,7 +19,7 @@ export default function CategorySection() {
   ];
 
   return (
-    <section className="py-5">
+    <section id="categorias" className="py-5">
       <div className="container text-center">
         <h2 className="mb-4 fw-bold">Explora por Categorías</h2>
         <p className="text-muted mb-5">
