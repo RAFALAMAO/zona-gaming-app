@@ -1,22 +1,46 @@
+import { useEffect, useState } from 'react';
+
 // ** Styles
 import styles from './CategorySection.module.css';
 
+// ** Services
+import { CategoryService } from '@/services/category/Category.service';
+
+// ** Dtos
+import type { GetAllWithProductsCountResDto } from '@/services/category/Category.dto';
+
 export default function CategorySection() {
-  const categories = [
-    {
-      name: 'Computadoras',
-      description: 'Gaming, trabajo y estudio',
-      count: '120+',
-      icon: 'bi bi-laptop',
-    },
-    {
-      name: 'Drones',
-      description: 'Profesionales y recreativos',
-      count: '45+',
-      icon: 'bi bi-bezier',
-    },
-    { name: 'Smartphones', description: 'Última generación', count: '80+', icon: 'bi bi-phone' },
-  ];
+  const categoryService = new CategoryService();
+
+  const [categories, setCategories] = useState<GetAllWithProductsCountResDto[]>([]);
+
+  const choseCategoryIcon = (category: string) => {
+    switch (category) {
+      case 'Computadoras':
+        return 'bi bi-pc-display-horizontal';
+      case 'Drones':
+        return 'bi bi-bezier';
+      case 'Celulares':
+        return 'bi bi-phone';
+      case 'Monitores':
+        return 'bi bi-display';
+      case 'Pantallas':
+        return 'bi bi-tv';
+      case 'Consolas':
+        return 'bi bi-controller';
+      default:
+        return 'bi bi-cpu';
+    }
+  };
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      const categories = await categoryService.getAllWithProductsCount();
+      setCategories(categories);
+    };
+
+    fetchCategories();
+  }, []);
 
   return (
     <section id="categorias" className="py-5">
@@ -31,11 +55,11 @@ export default function CategorySection() {
               <div className={`card h-100 pt-3 ${styles.card}`}>
                 <div className="card-body">
                   <div className={`display-5 ${styles['icon-container']}`}>
-                    <i className={`${cat.icon} ${styles.icon}`}></i>
+                    <i className={`${choseCategoryIcon(cat.name)} ${styles.icon}`}></i>
                   </div>
                   <h5 className="card-title mt-3 fw-bold">{cat.name}</h5>
                   <p className="card-text text-muted">{cat.description}</p>
-                  <p className="text-primary fw-bold">{cat.count} productos</p>
+                  <p className="text-primary fw-bold">{cat.productsCount} productos</p>
                 </div>
               </div>
             </div>
