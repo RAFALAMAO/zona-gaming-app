@@ -1,21 +1,11 @@
-import { useEffect, useState } from 'react';
-
 // ** Styles
 import styles from './CategorySection.module.css';
 
-// ** Services
-import { CategoryService } from '@/services/category/Category.service';
-
-// ** Dtos
-import type { GetAllWithProductsCountResDto } from '@/services/category/Category.dto';
-
-// ** Components
-import Loader from '@/components/Shared/Loader/Loader';
+// ** Store
+import { useAppSelector } from '@/store';
 
 export default function CategorySection() {
-  const categoryService = new CategoryService();
-
-  const [categories, setCategories] = useState<GetAllWithProductsCountResDto[]>([]);
+  const { categories } = useAppSelector((state) => state.categories);
 
   const choseCategoryIcon = (category: string) => {
     switch (category) {
@@ -36,18 +26,8 @@ export default function CategorySection() {
     }
   };
 
-  useEffect(() => {
-    const fetchCategories = async () => {
-      const categories = await categoryService.getAllWithProductsCount();
-      setCategories(categories);
-    };
-
-    fetchCategories();
-  }, []);
-
   return (
     <section id="categorias" className="py-5">
-      <Loader show={categories.length === 0} />
       <div className="container text-center">
         <h2 className="mb-4 fw-bold">Explora por Categorías</h2>
         <p className="text-muted mb-5">

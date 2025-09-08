@@ -1,4 +1,5 @@
 import { createRoot } from 'react-dom/client';
+import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router';
 
 // ** Styles
@@ -10,8 +11,13 @@ import './index.css';
 // ** Components
 import App from './App';
 
+// ** Store
+import { store } from './store';
+
 createRoot(document.getElementById('root')!).render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
+  <Provider store={store}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider>,
 );

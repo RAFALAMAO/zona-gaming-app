@@ -1,4 +1,3 @@
-import ProductCard from '@/components/Shared/ProductCard/ProductCard';
 import { useEffect, useState } from 'react';
 
 interface Product {
@@ -70,7 +69,7 @@ export default function ProductsView() {
       <div className="row">
         {paginated.map((p) => (
           <div key={p.id} className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-            <ProductCard product={p} id={Number(p.id)} />
+            {/* <ProductCard product={p} id={Number(p.id)} /> */}
           </div>
         ))}
       </div>

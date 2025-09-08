@@ -1,7 +1,7 @@
 import { AppAlpexApiGateWay } from '../app.alpex.api-getway';
 
 // ** Dtos
-import type { GetAllWithProductsCountResDto } from './Category.dto';
+import type { GetAllWithProductsCountResDto } from './Category.service.dto';
 
 export class CategoryService {
   private baseUrl: string = '/category';
