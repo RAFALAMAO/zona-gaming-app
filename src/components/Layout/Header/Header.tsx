@@ -35,12 +35,12 @@ export default function Header() {
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/#agregados">
-                  Agregados Recientemente
+                  Recientes
                 </Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="productos">
-                  Todos Los Productos
+                  Productos
                 </Link>
               </li>
             </ul>
