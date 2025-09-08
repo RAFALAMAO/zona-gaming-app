@@ -9,6 +9,9 @@ import { CategoryService } from '@/services/category/Category.service';
 // ** Dtos
 import type { GetAllWithProductsCountResDto } from '@/services/category/Category.dto';
 
+// ** Components
+import Loader from '@/components/Shared/Loader/Loader';
+
 export default function CategorySection() {
   const categoryService = new CategoryService();
 
@@ -44,6 +47,7 @@ export default function CategorySection() {
 
   return (
     <section id="categorias" className="py-5">
+      <Loader show={categories.length === 0} />
       <div className="container text-center">
         <h2 className="mb-4 fw-bold">Explora por Categorías</h2>
         <p className="text-muted mb-5">
