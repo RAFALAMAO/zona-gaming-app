@@ -1,15 +1,21 @@
 import { useEffect, useState } from 'react';
 
+// ** Types
+import type { IProductImage } from '@/types/ProductImage.type';
+
 interface Props {
-  images: string[];
+  images: IProductImage[] | undefined;
 }
 
 export default function ImageGallery({ images }: Props) {
-  const [activeImage, setActiveImage] = useState(images[0]);
+  const [activeImage, setActiveImage] = useState<string | undefined>(undefined);
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, []);
+    if (images && images.length > 0) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setActiveImage(images.find((img) => img.isMain)?.url || images[0].url);
+    }
+  }, [images]);
 
   return (
     <div>
@@ -31,14 +37,14 @@ export default function ImageGallery({ images }: Props) {
       </div>
 
       <div className="d-flex gap-3 mt-3 flex-wrap">
-        {images.map((img, i) => (
+        {images?.map((img, i) => (
           <img
             key={i}
-            src={img}
+            src={img.url}
             alt={`Vista ${i + 1}`}
-            className={`img-thumbnail ${img === activeImage ? 'border-primary' : ''}`}
+            className={`img-thumbnail ${img.url === activeImage ? 'border-primary' : ''}`}
             style={{ width: '100px', cursor: 'pointer' }}
-            onClick={() => setActiveImage(img)}
+            onClick={() => setActiveImage(img.url)}
           />
         ))}
       </div>

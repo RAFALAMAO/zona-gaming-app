@@ -1,24 +1,24 @@
+import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 
 // ** Components
 import ImageGallery from '@/components/ProductDetail/ImageGallery/ImageGallery';
+import Loader from '@/components/Shared/Loader/Loader';
+
+// ** Services
+import { ProductService } from '@/services/product/Product.service';
+
+// ** Types
+import type { IProduct } from '@/types/Product.type';
 
 export default function ProductDetailView() {
-  const mockProducts = [
-    {
-      id: '1',
-      name: 'Laptop Gaming ROG Strix',
-      price: '$1,299',
-      description:
-        'Laptop de alto rendimiento con Intel Core i7, 16GB RAM, SSD 1TB y gráfica RTX 4060.',
-      specs: ["Pantalla 15.6'' FHD", 'Teclado RGB', 'WiFi 6', 'Batería de larga duración'],
-      images: ['/imgs/temp/rog.png', '/imgs/temp/rog-1.jpg', '/imgs/temp/rog-2.jpg'],
-    },
-  ];
+  const productService = new ProductService();
 
   const { id } = useParams();
   const navigate = useNavigate();
-  const product = mockProducts.find((p) => p.id === id);
+
+  const [product, setProduct] = useState<IProduct | null>(null);
+  const [showLoader, setShowLoader] = useState(false);
 
   const handleWhatsappClick = () => {
     const textToShare = encodeURIComponent(
@@ -28,34 +28,45 @@ export default function ProductDetailView() {
     window.location.href = whatsappUrl;
   };
 
-  if (!product) {
-    return (
-      <div className="container py-5">
-        <h3>Producto no encontrado</h3>
-      </div>
-    );
-  }
+  useEffect(() => {
+    if (!id) return;
+
+    const fetchProduct = async () => {
+      setShowLoader(true);
+      try {
+        const product = await productService.getById(+id);
+        setProduct(product);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setShowLoader(false);
+      }
+    };
+
+    fetchProduct();
+  }, [id]);
 
   return (
     <div className="container py-5">
+      <Loader show={showLoader} />
       <button className="btn btn-outline-secondary mb-4" onClick={() => navigate(-1)}>
         <i className="bi bi-chevron-double-left"></i> Volver
       </button>
 
       <div className="row">
         <div className="col-md-6">
-          <ImageGallery images={product.images} />
+          <ImageGallery images={product?.images || []} />
         </div>
 
         <div className="col-md-6">
-          <h2 className="fw-bold">{product.name}</h2>
-          <h4 className="text-primary">{product.price}</h4>
-          <p className="mt-3">{product.description}</p>
+          <h2 className="fw-bold">{product?.name}</h2>
+          <h4 className="text-primary">{product?.price}</h4>
+          <p className="mt-3">{product?.description}</p>
           <h6 className="mt-4">Especificaciones:</h6>
           <ul className="list-unstyled">
-            {product.specs.map((spec, i) => (
+            {product?.specs.map((spec, i) => (
               <li key={i} className="mb-1">
-                <i className="bi bi-align-end"></i> {spec}
+                <i className="bi bi-align-end"></i> {spec.label}: {spec.value}
               </li>
             ))}
           </ul>
