@@ -13,7 +13,7 @@ const mockProducts: Product[] = Array.from({ length: 42 }, (_, i) => ({
   name: `Producto ${i + 1}`,
   category: i % 3 === 0 ? 'Laptop' : i % 3 === 1 ? 'Drone' : 'Smartphone',
   price: `$${(500 + i * 20).toFixed(2)}`,
-  image: `imgs/temp/rog.png`,
+  image: `/imgs/temp/rog.png`,
   state: i % 2 === 0 ? 'Nuevo' : 'Usado',
 }));
 
