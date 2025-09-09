@@ -11,6 +11,9 @@ import { ProductService } from '@/services/product/Product.service';
 // ** Types
 import type { IProduct } from '@/types/Product.type';
 
+// ** Tools
+import { formaterAmount } from '@/tools/formatAmount.tool';
+
 export default function ProductDetailView() {
   const productService = new ProductService();
 
@@ -60,7 +63,7 @@ export default function ProductDetailView() {
 
         <div className="col-md-6">
           <h2 className="fw-bold">{product?.name}</h2>
-          <h4 className="text-primary">{product?.price}</h4>
+          <h4 className="text-primary">{formaterAmount(product?.price || 0, '')}</h4>
           <p className="mt-3">{product?.description}</p>
           <h6 className="mt-4">Especificaciones:</h6>
           <ul className="list-unstyled">
