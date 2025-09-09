@@ -1,4 +1,4 @@
-import AnimatedNumbers from 'react-animated-numbers';
+import NumberFlow from '@number-flow/react';
 
 // ** Styles
 import styles from './HeroBanner.module.css';
@@ -9,6 +9,21 @@ import { useAppSelector } from '@/store';
 export default function HeroBanner() {
   const { countAvailables } = useAppSelector((state) => state.products);
   const { categories } = useAppSelector((state) => state.categories);
+
+  const animationConfig = {
+    transformTiming: {
+      duration: 3000,
+      easing: 'cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+    },
+    spinTiming: {
+      duration: 3000,
+      easing: 'cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+    },
+    opacityTiming: {
+      duration: 400,
+      easing: 'ease-out',
+    },
+  };
 
   return (
     <section className={`text-white text-center py-5 ${styles.background}`}>
@@ -21,13 +36,11 @@ export default function HeroBanner() {
         <div className="row mt-4 ms-5 me-5">
           <div className="col-12 col-sm-4">
             <h4 className="fw-bold">
-              <AnimatedNumbers
-                useThousandsSeparator
-                transitions={(index) => ({
-                  type: 'spring',
-                  duration: index + 5,
-                })}
-                animateToNumber={countAvailables}
+              <NumberFlow
+                value={countAvailables}
+                transformTiming={animationConfig.transformTiming}
+                spinTiming={animationConfig.spinTiming}
+                opacityTiming={animationConfig.opacityTiming}
               />
               +
             </h4>
@@ -35,13 +48,11 @@ export default function HeroBanner() {
           </div>
           <div className="col col-sm-4">
             <h4 className="fw-bold">
-              <AnimatedNumbers
-                useThousandsSeparator
-                transitions={(index) => ({
-                  type: 'spring',
-                  duration: index + 6,
-                })}
-                animateToNumber={categories.length}
+              <NumberFlow
+                value={categories.length}
+                transformTiming={animationConfig.transformTiming}
+                spinTiming={animationConfig.spinTiming}
+                opacityTiming={animationConfig.opacityTiming}
               />
               +
             </h4>
@@ -49,13 +60,11 @@ export default function HeroBanner() {
           </div>
           <div className="col col-sm-4">
             <h4 className="fw-bold">
-              <AnimatedNumbers
-                useThousandsSeparator
-                transitions={(index) => ({
-                  type: 'spring',
-                  duration: index + 6,
-                })}
-                animateToNumber={10}
+              <NumberFlow
+                value={10}
+                transformTiming={animationConfig.transformTiming}
+                spinTiming={animationConfig.spinTiming}
+                opacityTiming={animationConfig.opacityTiming}
               />
               +
             </h4>

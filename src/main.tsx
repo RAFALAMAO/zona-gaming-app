@@ -10,14 +10,17 @@ import './index.css';
 
 // ** Components
 import App from './App';
+import ErrorBoundary from './components/Shared/ErrorBoundary/ErrorBoundary';
 
 // ** Store
 import { store } from './store';
 
 createRoot(document.getElementById('root')!).render(
-  <Provider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </Provider>,
+  <ErrorBoundary>
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
+  </ErrorBoundary>,
 );

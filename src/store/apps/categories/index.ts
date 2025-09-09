@@ -37,6 +37,10 @@ export const appCategoriesSlice = createSlice({
       state.categories = [];
       state.loading = true;
     });
+    builder.addCase(fetchStoreCategories.rejected, (state) => {
+      state.categories = [];
+      state.loading = false;
+    });
   },
 });
 

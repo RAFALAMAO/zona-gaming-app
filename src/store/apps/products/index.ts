@@ -55,6 +55,10 @@ export const appProductsSlice = createSlice({
       state.countAvailables = 0;
       state.loadingAvailables = true;
     });
+    builder.addCase(fetchStoreCountAvailables.rejected, (state) => {
+      state.countAvailables = 0;
+      state.loadingAvailables = false;
+    });
     builder.addCase(fetchStoreLatest.fulfilled, (state, action) => {
       state.latestProducts = action.payload;
       state.loadingLatest = false;
@@ -62,6 +66,10 @@ export const appProductsSlice = createSlice({
     builder.addCase(fetchStoreLatest.pending, (state) => {
       state.latestProducts = [];
       state.loadingLatest = true;
+    });
+    builder.addCase(fetchStoreLatest.rejected, (state) => {
+      state.latestProducts = [];
+      state.loadingLatest = false;
     });
   },
 });
