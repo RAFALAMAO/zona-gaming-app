@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="row">
           <div className="col-md-3 mb-3">
             <div className="d-flex align-items-center mb-2">
-              <img className={`img-fluid ${styles.img}`} src="./imgs/gen-icon.png" alt="" />
+              <img className={`img-fluid ${styles.img}`} src="/imgs/gen-icon.png" alt="" />
               <h5 className="text-primary mt-2">Zona Gaming</h5>
             </div>
             <p className="small text-white">

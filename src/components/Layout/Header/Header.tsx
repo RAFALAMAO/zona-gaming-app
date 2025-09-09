@@ -8,7 +8,7 @@ export default function Header() {
       <nav className={`navbar navbar-expand-lg navbar-dark shadow-sm ${styles.navbar}`}>
         <div className="container">
           <Link className="text-decoration-none" to={'/'}>
-            <img className={styles['brand-img']} src="./imgs/gen-icon.png" alt="gen icon" />
+            <img className={styles['brand-img']} src="/imgs/gen-icon.png" alt="gen icon" />
             <span className={`navbar-brand text-primary fw-bold ${styles['brand-name']}`}>
               Zona Gaming
             </span>
