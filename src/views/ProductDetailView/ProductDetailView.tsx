@@ -65,7 +65,7 @@ export default function ProductDetailView() {
         <div className="col-md-6">
           <h4>
             {product?.name || (
-              <Skeleton width={400} baseColor="#777777ff" highlightColor="#262626ff" />
+              <Skeleton width={250} baseColor="#777777ff" highlightColor="#262626ff" />
             )}
           </h4>
           <h4 className="text-primary">
