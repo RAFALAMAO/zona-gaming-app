@@ -29,7 +29,7 @@ export default function SearchBar() {
       } else {
         setInputItems([]);
       }
-    }, 500);
+    }, 200);
 
     return () => clearTimeout(timeout);
   }, [inputValue]);
