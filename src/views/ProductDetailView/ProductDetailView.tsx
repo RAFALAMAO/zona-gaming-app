@@ -65,7 +65,7 @@ export default function ProductDetailView() {
         <div className="col-md-6">
           <h2 className="fw-bold">
             {product?.name || (
-              <Skeleton width={400} baseColor="#777777ff" highlightColor="#262626ff" />
+              <Skeleton width={250} baseColor="#777777ff" highlightColor="#262626ff" />
             )}
           </h2>
           <h4 className="text-primary">
