@@ -33,13 +33,3 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-
-.search-input {
-  border-radius: 10px;
-  border-color: cornflowerblue;
-}
-
-.search-input::placeholder {
-  color: rgb(205, 242, 255);
-  opacity: 0.5;
-}

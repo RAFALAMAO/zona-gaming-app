@@ -1,0 +1,24 @@
+.search-input {
+  border-radius: 10px;
+  border-color: cornflowerblue;
+}
+
+.search-input::placeholder {
+  color: rgb(205, 242, 255);
+  opacity: 0.5;
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  color: rgb(205, 242, 255);
+  font-size: 1rem;
+  pointer-events: none;
+}
+
+.search-menu-props {
+  border-radius: 10px;
+  z-index: 1000;
+}

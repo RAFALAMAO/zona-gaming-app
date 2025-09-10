@@ -1,6 +1,10 @@
-// ** Styles
 import { Link } from 'react-router';
+
+// ** Styles
 import styles from './Header.module.css';
+
+// ** Components
+import SearchBar from '@/components/Shared/SearchBar/SearchBar';
 
 export default function Header() {
   return (
@@ -44,16 +48,7 @@ export default function Header() {
                 </Link>
               </li>
             </ul>
-            <form className="d-flex">
-              <input
-                className={`form-control me-2 bg-dark text-white ${styles['search-input']}`}
-                type="search"
-                placeholder="Buscar productos..."
-              />
-              <button className="btn btn-outline-primary" type="submit">
-                Buscar
-              </button>
-            </form>
+            <SearchBar />
           </div>
         </div>
       </nav>
