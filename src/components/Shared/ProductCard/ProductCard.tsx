@@ -30,7 +30,7 @@ export default function ProductCard({ product }: Props) {
           {formaterAmount(product.price, '')}
         </p>
         <Link to={`/producto/${product.id}`} className="btn btn-primary w-100">
-          <i className="bi bi-bullseye me-2"></i>Ver Más
+          <i className="bi bi-eye me-2"></i>Ver Más
         </Link>
       </div>
     </div>

@@ -1,4 +1,5 @@
 import { createRoot } from 'react-dom/client';
+import { SkeletonTheme } from 'react-loading-skeleton';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router';
 
@@ -6,6 +7,7 @@ import { BrowserRouter } from 'react-router';
 import 'bootstrap';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-loading-skeleton/dist/skeleton.css';
 import './index.css';
 
 // ** Components
@@ -19,7 +21,9 @@ createRoot(document.getElementById('root')!).render(
   <ErrorBoundary>
     <Provider store={store}>
       <BrowserRouter>
-        <App />
+        <SkeletonTheme highlightColor="#d4d4d4ff" duration={0.9} borderRadius={10}>
+          <App />
+        </SkeletonTheme>
       </BrowserRouter>
     </Provider>
   </ErrorBoundary>,
