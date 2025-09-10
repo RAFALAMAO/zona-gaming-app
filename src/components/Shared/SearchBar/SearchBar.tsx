@@ -44,6 +44,19 @@ export default function SearchBar() {
         navigate(`/producto/${selectedItem.id}`);
       }
     },
+    stateReducer: (_, actionAndChanges) => {
+      const { type, changes } = actionAndChanges;
+
+      if (type === useCombobox.stateChangeTypes.ItemClick) {
+        return {
+          ...changes,
+          inputValue: '',
+          isOpen: false,
+        };
+      }
+
+      return changes;
+    },
   });
 
   return (
