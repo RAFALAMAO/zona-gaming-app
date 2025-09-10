@@ -25,7 +25,7 @@ export default function Header() {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div className="collapse navbar-collapse" id="navbarNav">
+          <div className="collapse navbar-collapse show" id="navbarNav">
             <ul className={`navbar-nav mx-auto ${styles['nav-items']}`}>
               <li className="nav-item">
                 <Link className="nav-link" to="/">
