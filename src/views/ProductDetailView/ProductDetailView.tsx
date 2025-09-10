@@ -63,11 +63,11 @@ export default function ProductDetailView() {
         </div>
 
         <div className="col-md-6">
-          <h2 className="fw-bold">
+          <h4>
             {product?.name || (
               <Skeleton width={400} baseColor="#777777ff" highlightColor="#262626ff" />
             )}
-          </h2>
+          </h4>
           <h4 className="text-primary">
             {product?.price ? (
               formaterAmount(product?.price, '')
@@ -95,7 +95,7 @@ export default function ProductDetailView() {
             Pedir Información
           </button>
           <div className="mt-4">
-            <p>Tambien puedes comunicate con nosotros por WhatsApp:</p>
+            <p>Tambien puedes contáctarnos al siguiente número:</p>
             <p className="fw-bold">+52 5610738792</p>
           </div>
         </div>
