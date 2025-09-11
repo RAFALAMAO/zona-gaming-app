@@ -64,9 +64,11 @@ export class ProductService {
     limit,
   }: FindByFiltersPagDataDto): Promise<FindByFiltersPagResDto> {
     try {
-      const { data } = await AppAlpexApiGateWay.get<FindByFiltersPagResDto>(
-        `${this.baseUrl}/get-by-filters-pag?search=${search}&category=${category}&page=${page}&limit=${limit}`,
-      );
+      let url = `${this.baseUrl}/find-by-filters-pag?page=${page}&limit=${limit}`;
+      if (search) url += `&search=${search}`;
+      if (category) url += `&category=${category}`;
+
+      const { data } = await AppAlpexApiGateWay.get<FindByFiltersPagResDto>(url);
 
       return data;
     } catch (error) {

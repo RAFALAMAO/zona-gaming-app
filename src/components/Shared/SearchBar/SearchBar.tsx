@@ -19,6 +19,8 @@ export default function SearchBar() {
 
   const navigate = useNavigate();
 
+  const searchDelay = 500;
+
   useEffect(() => {
     const timeout = setTimeout(() => {
       if (inputValue.trim()) {
@@ -29,7 +31,7 @@ export default function SearchBar() {
       } else {
         setInputItems([]);
       }
-    }, 200);
+    }, searchDelay);
 
     return () => clearTimeout(timeout);
   }, [inputValue]);

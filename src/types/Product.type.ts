@@ -1,3 +1,5 @@
+// ** Dtos
+import type { FindByFiltersPagResDto } from '@/services/product/dtos/Product.service.dto';
 import type { IBrand } from './Brand.type';
 import type { IProductImage } from './ProductImage.type';
 import type { ISpec } from './Spec.type';
@@ -19,11 +21,6 @@ export interface IProductsState {
   loadingAvailables: boolean;
   latestProducts: IProduct[];
   loadingLatest: boolean;
-  filters: {
-    search: string;
-    category: string;
-    page: number;
-    limit: number;
-  };
-  // filteredProductsRes: ;
+  filteredProductsRes: FindByFiltersPagResDto;
+  loadingFilteredProducts: boolean;
 }

@@ -1,40 +1,58 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import Skeleton from 'react-loading-skeleton';
 
-interface Product {
-  id: string;
-  name: string;
-  category: string;
-  price: string;
-  image: string;
-}
+// ** Components
+import ProductCard from '@/components/Shared/ProductCard/ProductCard';
 
-const mockProducts: Product[] = Array.from({ length: 42 }, (_, i) => ({
-  id: `${i + 1}`,
-  name: `Producto ${i + 1}`,
-  category: i % 3 === 0 ? 'Laptop' : i % 3 === 1 ? 'Drone' : 'Smartphone',
-  price: `$${(500 + i * 20).toFixed(2)}`,
-  image: `/imgs/temp/rog.png`,
-  state: i % 2 === 0 ? 'Nuevo' : 'Usado',
-}));
+// ** Store
+import { useAppDispatch, useAppSelector } from '@/store';
+import { fetchStoreCategories } from '@/store/apps/categories';
+import { fetchStoreFilteredProducts } from '@/store/apps/products';
 
 export default function ProductsView() {
   const [search, setSearch] = useState('');
   const [category, setCategory] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
+
+  const searchRef = useRef<string | null>(null);
+
   const itemsPerPage = 12;
+  const searchDelay = 500;
 
-  const filtered = mockProducts.filter(
-    (p) =>
-      (category === '' || p.category === category) &&
-      p.name.toLowerCase().includes(search.toLowerCase()),
+  const { categories } = useAppSelector((state) => state.categories);
+  const { filteredProductsRes, loadingFilteredProducts } = useAppSelector(
+    (state) => state.products,
   );
-
-  const totalPages = Math.ceil(filtered.length / itemsPerPage);
-  const paginated = filtered.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    !categories.length && dispatch(fetchStoreCategories());
   }, [currentPage]);
+
+  useEffect(() => {
+    if (searchRef.current === search) {
+      dispatch(fetchStoreFilteredProducts({ search, category, page: 1, limit: itemsPerPage }));
+      return;
+    }
+
+    const timeout = setTimeout(() => {
+      dispatch(
+        fetchStoreFilteredProducts({ search, category, page: currentPage, limit: itemsPerPage }),
+      );
+    }, searchDelay);
+
+    return () => clearTimeout(timeout);
+  }, [category, currentPage, search]);
+
+  useEffect(() => {
+    if (!loadingFilteredProducts) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [loadingFilteredProducts]);
+
+  useEffect(() => {
+    searchRef.current = search;
+  }, [search]);
 
   return (
     <div className="container py-5">
@@ -49,9 +67,25 @@ export default function ProductsView() {
             onChange={(e) => setCategory(e.target.value)}
           >
             <option value="">Todas las categorías</option>
-            <option value="Laptop">Laptops</option>
-            <option value="Drone">Drones</option>
-            <option value="Smartphone">Smartphones</option>
+            {categories.map((c) => (
+              <option key={c.id} value={c.name}>
+                {c.name}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="col-md-4">
+          <select
+            className="form-select"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          >
+            <option value="">Todas las marcas</option>
+            {categories.map((c) => (
+              <option key={c.id} value={c.name}>
+                {c.name}
+              </option>
+            ))}
           </select>
         </div>
         <div className="col-md-4">
@@ -67,17 +101,28 @@ export default function ProductsView() {
 
       {/* Grid de productos */}
       <div className="row">
-        {paginated.map((p) => (
-          <div key={p.id} className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-            {/* <ProductCard product={p} id={Number(p.id)} /> */}
-          </div>
-        ))}
+        {filteredProductsRes?.items?.length
+          ? filteredProductsRes.items.map((p) => (
+              <div key={p.id} className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+                <ProductCard product={p} />
+              </div>
+            ))
+          : (loadingFilteredProducts &&
+              Array.from({ length: itemsPerPage }, (_, i) => (
+                <div key={i} className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+                  <Skeleton height={300} />
+                </div>
+              ))) || (
+              <div className="container text-center mt-5 mb-5 py-5">
+                <p className="text-center fw-bold ">No se encontraron coincidencias</p>
+              </div>
+            )}
       </div>
 
       {/* Paginación */}
       <nav className="d-flex justify-content-center mt-4">
         <ul className="pagination">
-          {Array.from({ length: totalPages }, (_, i) => (
+          {Array.from({ length: filteredProductsRes.totalPages }, (_, i) => (
             <li key={i} className={`page-item ${currentPage === i + 1 ? 'active' : ''}`}>
               <button className="page-link" onClick={() => setCurrentPage(i + 1)}>
                 {i + 1}

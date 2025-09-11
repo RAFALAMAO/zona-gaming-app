@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 // ** Dtos
+import type { FindByFiltersPagDataDto } from '@/services/product/dtos/Product.service.dto';
 import type { IProductsState } from '@/types/Product.type';
 
 // ** Services
@@ -13,12 +14,13 @@ const initialState: IProductsState = {
   loadingAvailables: false,
   latestProducts: [],
   loadingLatest: false,
-  filters: {
-    search: '',
-    category: '',
+  filteredProductsRes: {
+    items: [],
+    total: 0,
     page: 0,
-    limit: 0,
+    totalPages: 0,
   },
+  loadingFilteredProducts: false,
 };
 
 // ** Fetchers
@@ -33,6 +35,13 @@ export const fetchStoreLatest = createAsyncThunk('appProducts/fetchLatest', asyn
   return await productService.getLatest(5);
 });
 
+export const fetchStoreFilteredProducts = createAsyncThunk(
+  'appProducts/fetchFilteredProducts',
+  async (filters: FindByFiltersPagDataDto) => {
+    return await productService.findByFiltersPag(filters);
+  },
+);
+
 // ** Slice
 export const appProductsSlice = createSlice({
   name: 'appProducts',
@@ -43,7 +52,6 @@ export const appProductsSlice = createSlice({
       state.loadingAvailables = initialState.loadingAvailables;
       state.latestProducts = initialState.latestProducts;
       state.loadingLatest = initialState.loadingLatest;
-      state.filters = initialState.filters;
     },
   },
   extraReducers: (builder) => {
@@ -59,6 +67,7 @@ export const appProductsSlice = createSlice({
       state.countAvailables = 0;
       state.loadingAvailables = false;
     });
+
     builder.addCase(fetchStoreLatest.fulfilled, (state, action) => {
       state.latestProducts = action.payload;
       state.loadingLatest = false;
@@ -70,6 +79,19 @@ export const appProductsSlice = createSlice({
     builder.addCase(fetchStoreLatest.rejected, (state) => {
       state.latestProducts = [];
       state.loadingLatest = false;
+    });
+
+    builder.addCase(fetchStoreFilteredProducts.fulfilled, (state, action) => {
+      state.filteredProductsRes = action.payload;
+      state.loadingFilteredProducts = false;
+    });
+    builder.addCase(fetchStoreFilteredProducts.pending, (state) => {
+      state.filteredProductsRes = initialState.filteredProductsRes;
+      state.loadingFilteredProducts = true;
+    });
+    builder.addCase(fetchStoreFilteredProducts.rejected, (state) => {
+      state.filteredProductsRes = initialState.filteredProductsRes;
+      state.loadingFilteredProducts = false;
     });
   },
 });
