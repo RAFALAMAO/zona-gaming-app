@@ -32,7 +32,7 @@ export const fetchStoreCountAvailables = createAsyncThunk(
 );
 
 export const fetchStoreLatest = createAsyncThunk('appProducts/fetchLatest', async () => {
-  return await productService.getLatest(5);
+  return await productService.getLatest(4);
 });
 
 export const fetchStoreFilteredProducts = createAsyncThunk(
