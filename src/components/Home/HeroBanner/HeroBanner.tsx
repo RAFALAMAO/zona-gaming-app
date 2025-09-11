@@ -9,6 +9,7 @@ import { useAppSelector } from '@/store';
 export default function HeroBanner() {
   const { countAvailables } = useAppSelector((state) => state.products);
   const { categories } = useAppSelector((state) => state.categories);
+  const { brands } = useAppSelector((state) => state.brands);
 
   const animationConfig = {
     transformTiming: {
@@ -61,7 +62,7 @@ export default function HeroBanner() {
           <div className="col col-sm-4">
             <h4 className="fw-bold">
               <NumberFlow
-                value={10}
+                value={brands.length}
                 transformTiming={animationConfig.transformTiming}
                 spinTiming={animationConfig.spinTiming}
                 opacityTiming={animationConfig.opacityTiming}

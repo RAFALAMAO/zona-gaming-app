@@ -1,3 +1,5 @@
+import { Link } from 'react-router';
+
 // ** Styles
 import styles from './CategorySection.module.css';
 
@@ -34,20 +36,28 @@ export default function CategorySection() {
           Encuentra exactamente lo que buscas en nuestras categorías especializadas
         </p>
         <div className="row justify-content-center">
-          {categories.map((cat, i) => (
-            <div key={i} className="col-10 col-sm-6 col-md-4 mb-4">
-              <div className={`card h-100 pt-3 ${styles.card}`}>
-                <div className="card-body">
-                  <div className={`display-5 ${styles['icon-container']}`}>
-                    <i className={`${choseCategoryIcon(cat.name)} ${styles.icon}`}></i>
+          {categories.map(
+            (cat, i) =>
+              cat.productsCount > 0 && (
+                <Link
+                  to="/productos"
+                  state={{ category: cat.name }}
+                  key={i}
+                  className="col-10 col-sm-6 col-md-4 mb-4 text-decoration-none"
+                >
+                  <div className={`card h-100 pt-3 ${styles.card}`}>
+                    <div className="card-body">
+                      <div className={`display-5 ${styles['icon-container']}`}>
+                        <i className={`${choseCategoryIcon(cat.name)} ${styles.icon}`}></i>
+                      </div>
+                      <h5 className="card-title mt-3 fw-bold">{cat.name}</h5>
+                      <p className="card-text text-muted">{cat.description}</p>
+                      <p className="text-primary fw-bold">{cat.productsCount} productos</p>
+                    </div>
                   </div>
-                  <h5 className="card-title mt-3 fw-bold">{cat.name}</h5>
-                  <p className="card-text text-muted">{cat.description}</p>
-                  <p className="text-primary fw-bold">{cat.productsCount} productos</p>
-                </div>
-              </div>
-            </div>
-          ))}
+                </Link>
+              ),
+          )}
         </div>
       </div>
     </section>

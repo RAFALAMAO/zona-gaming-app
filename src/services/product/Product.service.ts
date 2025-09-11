@@ -60,6 +60,7 @@ export class ProductService {
   async findByFiltersPag({
     search,
     category,
+    brand,
     page,
     limit,
   }: FindByFiltersPagDataDto): Promise<FindByFiltersPagResDto> {
@@ -67,6 +68,7 @@ export class ProductService {
       let url = `${this.baseUrl}/find-by-filters-pag?page=${page}&limit=${limit}`;
       if (search) url += `&search=${search}`;
       if (category) url += `&category=${category}`;
+      if (brand) url += `&brand=${brand}`;
 
       const { data } = await AppAlpexApiGateWay.get<FindByFiltersPagResDto>(url);
 

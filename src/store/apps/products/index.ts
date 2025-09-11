@@ -11,16 +11,16 @@ const productService = new ProductService();
 
 const initialState: IProductsState = {
   countAvailables: 0,
-  loadingAvailables: false,
+  loadingAvailables: true,
   latestProducts: [],
-  loadingLatest: false,
+  loadingLatest: true,
   filteredProductsRes: {
     items: [],
     total: 0,
     page: 0,
     totalPages: 0,
   },
-  loadingFilteredProducts: false,
+  loadingFilteredProducts: true,
 };
 
 // ** Fetchers

@@ -1,0 +1,4 @@
+.active-filter {
+  border: 2px solid #00b894; /* Verde menta, cámbialo por tu color custom */
+  box-shadow: 0 0 0 0.2rem rgba(0, 184, 148, 0.25);
+}

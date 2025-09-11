@@ -5,3 +5,8 @@ export interface IBrand {
   name: string;
   products: IProduct[];
 }
+
+export interface IBrandState {
+  loading: boolean;
+  brands: IBrand[];
+}

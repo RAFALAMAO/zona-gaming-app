@@ -21,7 +21,7 @@ createRoot(document.getElementById('root')!).render(
   <ErrorBoundary>
     <Provider store={store}>
       <BrowserRouter>
-        <SkeletonTheme highlightColor="#d4d4d4ff" duration={0.9} borderRadius={10}>
+        <SkeletonTheme highlightColor="#b1b1b1ff" duration={0.9} borderRadius={10}>
           <App />
         </SkeletonTheme>
       </BrowserRouter>
