@@ -9,7 +9,7 @@ export default function Footer() {
           <div className="col-md-3 mb-3">
             <div className="d-flex align-items-center mb-2">
               <img className={`img-fluid ${styles.img}`} src="/imgs/gen-icon.png" alt="" />
-              <h5 className="text-primary mt-2">Zona Gaming</h5>
+              <h5 className="text-primary mt-2">Gear Verse</h5>
             </div>
             <p className="small text-white">
               Tu tienda online para la mejor tecnología, ofreciendo las últimas generaciones con
@@ -89,10 +89,10 @@ export default function Footer() {
             <h6 className="fw-bold">Contacto</h6>
             <div className={`text-white-50 ${styles['contact-icons']}`}>
               <p className="small mb-1">
-                <i className="bi bi-envelope"></i> support@techmarket.com
+                <i className="bi bi-envelope"></i> support@666.com
               </p>
               <p className="small mb-1">
-                <i className="bi bi-whatsapp" /> +52 5610738792
+                <i className="bi bi-whatsapp" /> +52 6666666666
               </p>
               <p className="small">
                 <i className="bi bi-geo-alt"></i> Ciudad de México, México
@@ -102,7 +102,7 @@ export default function Footer() {
         </div>
 
         <hr />
-        <div className="text-center small">© 2025 Zona Gaming. Todos los derechos reservados.</div>
+        <div className="text-center small">© 2025 Gear Verse. Todos los derechos reservados.</div>
       </div>
     </footer>
   );

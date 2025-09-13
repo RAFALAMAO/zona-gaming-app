@@ -29,7 +29,7 @@ export default function ProductDetailView() {
     const textToShare = encodeURIComponent(
       `Me pueden dar mas información sobre este producto:\n ${window.location.href}`,
     );
-    const whatsappUrl = `whatsapp://send?text=${textToShare}&phone=+525610738792`;
+    const whatsappUrl = `whatsapp://send?text=${textToShare}&phone=+526666666666`;
     window.location.href = whatsappUrl;
   };
 
@@ -96,7 +96,7 @@ export default function ProductDetailView() {
           </button>
           <div className="mt-4">
             <p>Tambien puedes contáctarnos al siguiente número:</p>
-            <p className="fw-bold">+52 5610738792</p>
+            <p className="fw-bold">+52 6666666666</p>
           </div>
         </div>
       </div>

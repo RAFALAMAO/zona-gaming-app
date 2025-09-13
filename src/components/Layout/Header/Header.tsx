@@ -14,7 +14,7 @@ export default function Header() {
           <Link className="text-decoration-none" to={'/'}>
             <img className={styles['brand-img']} src="/imgs/gen-icon.png" alt="gen icon" />
             <span className={`navbar-brand text-primary fw-bold ${styles['brand-name']}`}>
-              Zona Gaming
+              Gear Verse
             </span>
           </Link>
           <button
